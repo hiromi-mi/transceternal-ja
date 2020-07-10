@@ -1,6 +1,8 @@
 # transceternal-ja
 
-Transceternal 難解プログラミング言語に関する非公式情報のまとめを行います. 
+English page is avaliable at [README.en.html](README.en.html).
+
+[Transceternal](https://esolangs.org/wiki/Transceternal) 難解プログラミング言語に関する非公式情報のまとめを行います. 
 
 ## ライセンス
 [CC0](https://creativecommons.org/share-your-work/public-domain/cc0/)

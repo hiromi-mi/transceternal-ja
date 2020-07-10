@@ -1,0 +1,17 @@
+# transceternal-ja
+
+Unoffical website about [Transceternal](https://esolangs.org/wiki/Transceternal) programming language (mainly written in Japanese, work in progress)
+
+## Example
+
+### cat command
+
+On the offical website, `cat` program is written as follows:
+```
+catacat
+```
+
+An another `cat` program can be written with 3 bytes:
+```
+aba
+```
