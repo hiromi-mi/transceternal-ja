@@ -1,12 +1,12 @@
 # transceternal-ja
 
-Unoffical website about [Transceternal](https://esolangs.org/wiki/Transceternal) programming language (mainly written in Japanese, work in progress)
+Unofficial website about [Transceternal](https://esolangs.org/wiki/Transceternal) programming language (mainly written in Japanese, work in progress)
 
 ## Example
 
 ### cat command
 
-On the offical website, `cat` program is written as follows:
+On [the official website](https://esolangs.org/wiki/Transceternal#Cat), `cat` program is written as follows:
 ```
 catacat
 ```
@@ -15,3 +15,39 @@ An another `cat` program can be written with 3 bytes:
 ```
 aba
 ```
+
+### An approach to shorten transceternal program
+
+This instruction uses `cat` as an example:
+#### Step 1: Write down all restrictions which should be followed
+
+* a node's 1-pointer should point to `B0` (To finish program)
+* a node's 1-pointer should point to `B1` (To find `B1`)
+* a node's 0-pointer should point to `B0` (To find `B0`)
+
+This can be created with just two nodes.
+
+#### Step 2: Write down the program
+
+* `A` := Node No.1
+* `B` := Node No.2
+
+
+#### Step 3: Consider whether last several bytes can be omitted
+By omitting tail, the nodes' pointer points to themselves. 
+
+```
+ababa
+```
+The 4th byte means that 1-pointer of `b` is also `b`, and 5th byte means that 1-pointer of `a` is also `a`. These two bytes can be omitted as follows:
+```
+aba
+```
+This gets 3-byte `cat` command.
+
+## Feedback and Contribution
+
+Feedbacks, questions, contributions are always welcome,
+for example by [creating issues](https://github.com/hiromi-mi/transceternal-ja/issues),
+[sending pull/merge requests](https://github.com/hiromi-mi/transceternal-ja/pulls),
+or find me at [Fediverse](https://mblg.hiromi-mi.jp/) or at [Twitter @_hiromi_mi](https://twitter.com/_hiromi_mi).
