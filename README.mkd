@@ -4,6 +4,24 @@ English page is avaliable at [README.en.html](README.en.html).
 
 [Transceternal](https://esolangs.org/wiki/Transceternal) 難解プログラミング言語に関する非公式情報のまとめを行います. 
 
+## インストール
+node.js および yarn さらには git が必要となります.
+
+```
+$ git clone --depth 1 https://github.com/Hakerh400/esolangs/
+$ cd esolangs
+$ yarn install
+```
+
+インタプリタは次のように実行します:
+```
+(write program into program.txt)
+(write initial arguments into input.txt)
+$ touch output.txt
+$ node transceternal program.txt input.txt output.txt
+$ cat output.txt
+```
+
 ## 例
 
 ### cat コマンド

@@ -2,6 +2,31 @@
 
 Unofficial website about [Transceternal](https://esolangs.org/wiki/Transceternal) programming language (mainly written in Japanese, work in progress)
 
+## Install Transceternal
+Transceternal can be downloaded from author's GitHub repository [https://github.com/Hakerh400/esolangs/](https://github.com/Hakerh400/esolangs/).
+```
+$ git clone --depth 1 https://github.com/Hakerh400/esolangs/
+$ cd esolangs
+$ yarn install
+```
+
+To run the interpreter:
+```
+(write program into program.txt)
+(write initial arguments into input.txt)
+$ touch output.txt
+$ node transceternal program.txt input.txt output.txt
+$ cat output.txt
+```
+
+## Language Description
+
+For detailed explanation, see the official website. This section summarizes the language specification.
+
+Transceternal is "graph-rewriting paradigm programming language". This means all program-related ones including source code, arguments, output are treated unitedly as graph structure.
+
+the overview of the graph is as follows: (work in progress, I should translate into English):
+
 ## Example
 
 ### cat command
