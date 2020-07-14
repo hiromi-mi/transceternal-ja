@@ -36,3 +36,6 @@ aba
 
 ## Author
 [hiromi-mi](https://hiromi-mi.github.io/)
+
+## 連絡先
+[GitHub Issue](https://github.com/hiromi-mi/transceternal-ja/issues) や [Fediverse @hiromi_mi@mblg.hiromi-mi.jp](https://mblg.hiromi-mi.jp/), あるいは [Twitter @_hiromi_mi](https://twitter.com/_hiromi_mi) などからどうぞ.

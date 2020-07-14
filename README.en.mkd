@@ -78,4 +78,4 @@ This gets 3-byte `cat` command.
 Feedbacks, questions, contributions are always welcome,
 for example by [creating issues](https://github.com/hiromi-mi/transceternal-ja/issues),
 [sending pull/merge requests](https://github.com/hiromi-mi/transceternal-ja/pulls),
-or find me at [Fediverse](https://mblg.hiromi-mi.jp/) or at [Twitter @_hiromi_mi](https://twitter.com/_hiromi_mi).
+or find me at [Fediverse @hiromi_mi@mblg.hiromi-mi.jp](https://mblg.hiromi-mi.jp/) or at [Twitter @_hiromi_mi](https://twitter.com/_hiromi_mi).
