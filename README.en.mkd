@@ -45,6 +45,9 @@ aba
 ```
 This gets 3-byte `cat` command.
 
+## License
+[CC0](https://creativecommons.org/share-your-work/public-domain/cc0/)
+
 ## Feedback and Contribution
 
 Feedbacks, questions, contributions are always welcome,
