@@ -1,0 +1,6 @@
+# Transceternal Assembler
+
+難解プログラミング言語 Transceternal のアセンブラです.
+
+* License: CC0-1.0
+* Author: hiromi-mi

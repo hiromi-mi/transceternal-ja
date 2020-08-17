@@ -1,4 +1,4 @@
-# Assembeler
+# Transceternal Assembeler
 # SPDX-License-Identifier: CC0-1.0
 
 from string import digits, ascii_uppercase, ascii_lowercase
