@@ -22,31 +22,36 @@
 
 \begin{frame}{おしながき}
    \tableofcontents
-   % You might wish to add the option [pausesections]
+% You might wish to add the option [pausesections]
 \end{frame}
 \section{概要}
 
-\begin{frame}{ビフォーアフター}[fragile]
+\begin{frame}[fragile]{ビフォーアフター}
    当初のソースコード (1560バイト):
    before:
    \begin{verbatim}
+
    TODO 長すぎて入りきらない
+
    \end{verbatim}
 \end{frame}
-\begin{frame}{ビフォーアフター}[fragile]
+\begin{frame}[fragile]{ビフォーアフター}
    現在のソースコード (240バイト):
+
    \begin{verbatim}
-012333435363738393a3b3c3d3e3f3g3h3i3j3k
-3l3m3n3o3p3q3r3s3t3u3v3w3x3y3z323IK2Jzr
-+,0-.W3X2XO3P3Q3R3S3T3U3V3W'(0)*VN3O#$0
-%&UM3NYZ0!"TL3MAE2DB2C2yz/=2<:2;2zs[^2]
-z\34_{2`z\|Υ2ΤB}2~2Σ2ΣΧΪ2ΩΨ2:Φ2Bίΰ0αβ}Ψ
-Ϋή2έzά2Ψ2+FH2GBb>@2?:4[FFF
+
+012333435363738393a3b3c3d3e3f3g3h3i3j3k3l
+3m3n3o3p3q3r3s3t3u3v3w3x3y3z323IK2Jzr+,0
+-.W3X2XO3P3Q3R3S3T3U3V3W'(0)*VN3O#$0%&UM3
+NYZ0!"TL3MAE2DB2C2yz/=2<:2;2zs[^2]z\34_{
+2`z\|Υ2ΤB}2~2Σ2ΣΧΪ2ΩΨ2:Φ2Bίΰ0αβ}ΨΫή2έzά2Ψ
+2+FH2GBb>@2?:4[FFF
    \end{verbatim}
+
    (入りきらないので改行済)
 \end{frame}
 
-\begin{frame}{概要}[fragile]
+\begin{frame}[fragile]{概要}
 Transceternal でソースコードを短くしたいときのチェックリスト。
 
 ソースコードとは
@@ -67,7 +72,8 @@ catacat
 
 \end{frame}
 
-\begin{frame}{空白文字をなくす}[fragile]
+\begin{frame}[fragile]{空白文字をなくす}
+
    \begin{description}
       \item[効果] 中規模以上のプログラムではソースコードを2/3 程度に減らせる。
       \item[実装の手間] 中
@@ -83,7 +89,6 @@ catacat
    先の例では3バイト文字であるひらがなを用いたが、実際にはロシア文字などの 2バイト文字を使うとよい
 
    \begin{verbatim}
-
     # Cyriic, Arabic
     "".join([chr(x) for x in range(0x3a3, 0x052f)]) + "".join([chr(x) for x in range(0x61e, 0x70d)])
     \end{verbatim}
@@ -155,5 +160,5 @@ catacat
    今回は変数の個数が少なく、全ての変数を B0, B1 直下に配置したので、ブックマークせずとも元々の位置で既に4バイト以下でアクセスできた。この方針では有益にならなかった。
 \end{frame}
 
-
 \end{document}
+
