@@ -1,0 +1,159 @@
+\documentclass[12pt,unicode]{beamer}
+\usepackage{luatexja}% 日本語したい
+\renewcommand{\kanjifamilydefault}{\gtdefault}% 既定をゴシック体に
+\usepackage{unicode-math}
+
+\usepackage{graphicx}
+\usepackage{ulem}
+
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\input{style.tex}
+\title{Transceternal Codegolf Technique}
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{theorems}[numbered]
+\setbeamerfont{itemize/enumerate body}{size=\fontsize{12pt}{12pt}}
+\setbeamerfont{itemize/enumerate subbody}{size=\fontsize{10pt}{11,4pt}}
+\begin{document}
+\begin{frame}
+   \titlepage{}
+\end{frame}
+
+\begin{frame}{おしながき}
+   \tableofcontents
+   % You might wish to add the option [pausesections]
+\end{frame}
+\section{概要}
+
+\begin{frame}{ビフォーアフター}[fragile]
+   当初のソースコード (1560バイト):
+   before:
+   \begin{verbatim}
+   TODO 長すぎて入りきらない
+   \end{verbatim}
+\end{frame}
+\begin{frame}{ビフォーアフター}[fragile]
+   現在のソースコード (240バイト):
+   \begin{verbatim}
+012333435363738393a3b3c3d3e3f3g3h3i3j3k
+3l3m3n3o3p3q3r3s3t3u3v3w3x3y3z323IK2Jzr
++,0-.W3X2XO3P3Q3R3S3T3U3V3W'(0)*VN3O#$0
+%&UM3NYZ0!"TL3MAE2DB2C2yz/=2<:2;2zs[^2]
+z\34_{2`z\|Υ2ΤB}2~2Σ2ΣΧΪ2ΩΨ2:Φ2Bίΰ0αβ}Ψ
+Ϋή2έzά2Ψ2+FH2GBb>@2?:4[FFF
+   \end{verbatim}
+   (入りきらないので改行済)
+\end{frame}
+
+\begin{frame}{概要}[fragile]
+Transceternal でソースコードを短くしたいときのチェックリスト。
+
+ソースコードとは
+
+\begin{verbatim}
+
+catacat
+
+\end{verbatim}
+
+のような Transceternal 処理系に直接読み込めるものを指す
+
+以降、ソースコード末尾は改行されていないものとする
+
+   Transceternal 言語の基本的な仕様を把握していることを前提とする。
+   言語原作者による解説 \url{https://esolangs.org/wiki/Transceternal}
+   もしくは筆者のスライド \url{https://hiromi-mi.github.io/trans.pdf} を参照。
+
+\end{frame}
+
+\begin{frame}{空白文字をなくす}[fragile]
+   \begin{description}
+      \item[効果] 中規模以上のプログラムではソースコードを2/3 程度に減らせる。
+      \item[実装の手間] 中
+      \item[技巧性] 中
+      \item[適用可能性] いつでも
+   \end{description}
+
+   Transceternal の単一トークンは 1文字 もしくは (スペース区切りの) 文字列 である
+
+   この 1文字 には印字可能文字であればマルチバイト文字も含まれる。同一個数のトークンでも、ABC と表現するのと あ と表現するのでは
+   全てのトークンを1文字で表記するとスペース区切りが不要になるので、ソースコードの空白が全て削除できる
+
+   先の例では3バイト文字であるひらがなを用いたが、実際にはロシア文字などの 2バイト文字を使うとよい
+
+   \begin{verbatim}
+
+    # Cyriic, Arabic
+    "".join([chr(x) for x in range(0x3a3, 0x052f)]) + "".join([chr(x) for x in range(0x61e, 0x70d)])
+    \end{verbatim}
+
+    Python ならこのように2バイト文字列を列挙できる (トークン数に応じ境界は調整すること)
+\end{frame}
+
+\begin{frame}{絶対アドレス指定用接点の共有}
+   \begin{description}
+      \item[効果] 高い。半減も可能？
+      \item[実装の手間] 特殊な場合のみ実装するなら低、一般の場合は中から高
+      \item[技巧性] 中
+      \item[適用可能性] deserialize される接点が存在するならいつでも
+   \end{description}
+\end{frame}
+\subsection{0ビットにする}
+\begin{frame}
+   \begin{description}
+      \item[効果] 数bitから沢山まで、可能性はもろもろ
+      \item[実装の手間] 高
+      \item[技巧性] 高
+      \item[適用可能性] いつでも
+   \end{description}
+\end{frame}
+
+\begin{frame}{B1, admin, root 接点を他の接点と共有}
+   \begin{description}
+      \item[効果] 数バイト？
+      \item[実装の手間] 高
+      \item[技巧性] 高
+      \item[適用可能性] 小規模プログラムのみ。B1 と比べadmin は難しい
+   \end{description}
+\end{frame}
+
+\section{その他の要検討事項}
+\begin{frame}
+
+\end{frame}
+
+\section{没となったアイデア}
+\begin{frame}
+   以下では没となったアイデアを取り上げる。
+   場合によっては利用できるかもしれない？
+\end{frame}
+
+\begin{frame}{動的命令生成}
+   問題点: allocate 命令をつかうために 4接点必要なこと、ソースコードが読みにくくなること
+
+   allocate おコストが高いので利用可能な場面に思い至らない状況
+\end{frame}
+
+\begin{frame}{ブックマーク (仮)}
+   deserialize 対象について、接点が 1 と判定される基準は 0-pointer が B0 でないこと。
+   B1 でなくてもよい。
+
+   "B0 以外" の接点を今までは B1 などと定めていたが、そこに情報を埋め込みたい
+
+   有益な接点にアクセスするための絶対アドレスがdeserialize 対象の絶対アドレス + 最初の1 までのアドレス数 + 0 で表現できる。深い階層にある変数を簡潔に表せることが期待できる
+\end{frame}
+
+\begin{frame}{ブックマーク (仮)}
+   if 扱いになる条件は また、 B0 でもB1 でもない接点を指すとき であった
+
+   その接点を新しく作らずに既存接点 (root) にすることで if に必要な接点が1つ省略できるのは紹介した通りだが、そこに情報を埋め込みたい
+
+   プログラム中実行中に if 対象の接点は絶対アドレス  `0100` のたった4バイトでアクセスできる。
+   深い階層にある変数をif 中の左辺や右辺に使うとき、その変数の接点へのポインタを `0100` に置いておくと 必要な絶対アドレスの abstruct 表現が削減できる。
+
+   今回は変数の個数が少なく、全ての変数を B0, B1 直下に配置したので、ブックマークせずとも元々の位置で既に4バイト以下でアクセスできた。この方針では有益にならなかった。
+\end{frame}
+
+
+\end{document}
