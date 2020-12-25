@@ -2,12 +2,21 @@
 \usepackage{luatexja}% 日本語したい
 \renewcommand{\kanjifamilydefault}{\gtdefault}% 既定をゴシック体に
 \usepackage{unicode-math}
+% https://ja.osdn.net/projects/luatex-ja/wiki/LuaTeX-ja%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9#h3-.E3.83.95.E3.82.A9.E3.83.B3.E3.83.88.E3.81.AE.E6.8C.87.E5.AE.9A
+\usepackage{luatexja-fontspec}
+\usepackage{fontspec}
+\usepackage{fancyvrb}
+% https://tex.stackexchange.com/questions/171803/change-font-size-of-the-verbatim-environment
+\setmainjfont{mplus-2p-regular}
+\setmainfont{mplus-2p-regular}
+\setsansjfont{mplus-2p-regular}
+\setsansfont{mplus-2p-regular}
 
 \usepackage{graphicx}
 \usepackage{ulem}
 
 \usepackage{amsmath}
-\usepackage{hyperref}
+\usepackage{url}
 
 \input{style.tex}
 \title{Transceternal Codegolf Technique}
@@ -20,133 +29,276 @@
    \titlepage{}
 \end{frame}
 
-\begin{frame}{おしながき}
-   \tableofcontents
+%\begin{frame}{おしながき}
+%   \tableofcontents
 % You might wish to add the option [pausesections]
-\end{frame}
+%\end{frame}
 \section{概要}
 
-\begin{frame}[fragile]{ビフォーアフター}
-   当初のソースコード (1560バイト):
-   before:
-   \begin{verbatim}
-
-   TODO 長すぎて入りきらない
-
-   \end{verbatim}
-\end{frame}
-\begin{frame}[fragile]{ビフォーアフター}
-   現在のソースコード (240バイト):
-
-   \begin{verbatim}
-
-012333435363738393a3b3c3d3e3f3g3h3i3j3k3l
-3m3n3o3p3q3r3s3t3u3v3w3x3y3z323IK2Jzr+,0
--.W3X2XO3P3Q3R3S3T3U3V3W'(0)*VN3O#$0%&UM3
-NYZ0!"TL3MAE2DB2C2yz/=2<:2;2zs[^2]z\34_{
-2`z\|Υ2ΤB}2~2Σ2ΣΧΪ2ΩΨ2:Φ2Bίΰ0αβ}ΨΫή2έzά2Ψ
-2+FH2GBb>@2?:4[FFF
-   \end{verbatim}
-
-   (入りきらないので改行済)
-\end{frame}
-
 \begin{frame}[fragile]{概要}
-Transceternal でソースコードを短くしたいときのチェックリスト。
-
-ソースコードとは
+   Transceternal でソースコードを短くしたいときのチェックリスト。
+   なお、ソースコードとは以下のような Transceternal 処理系に直接読み込むものを指す
 
 \begin{verbatim}
-
 catacat
-
 \end{verbatim}
 
-のような Transceternal 処理系に直接読み込めるものを指す
+実際に試す際にはソースコードの末尾に改行を含まないよう注意。
 
-以降、ソースコード末尾は改行されていないものとする
+Transceternal 言語の基本的な仕様を把握していることを前提とする。
+言語原作者による解説 \url{https://esolangs.org/wiki/Transceternal}
+もしくは筆者のスライド \url{https://hiromi-mi.github.io/trans.pdf} を参照。
 
-   Transceternal 言語の基本的な仕様を把握していることを前提とする。
-   言語原作者による解説 \url{https://esolangs.org/wiki/Transceternal}
-   もしくは筆者のスライド \url{https://hiromi-mi.github.io/trans.pdf} を参照。
+\end{frame}
 
+
+\begin{frame}[fragile]{Before 1560バイト}
+   \begin{Verbatim}[fontsize=\tiny]
+0 1 2 2 2 3 4 5 3 6 3 7 3 8 3 9 3 A 3 B 3 C 3 D 3 E 3 F 3
+G 3 H 3 I 3 J 3 K 3 L 3 M 3 N 3 O 3 P 3 Q 3 R 3 S 3 T 3 U
+3 V 3 W 3 X 3 Y 3 Z 3 a 3 b 3 c 2 c d 3 2 d 2d 2e 2f 2f 2f
+2g 2h 1p 3 1q 3 1r 3 1s 3 1t 3 1u 3 1v 3 1w 3 1x 3 1y 2 1y
+1h 3 1i 3 1j 3 1k 3 1l 3 1m 3 1n 3 1o 3 1p 2Y 2Z 2a 2a 2a
+2b 2c 1o 1g 3 1h 2T 2U 2V 2V 2V 2W 2X 1n 1f 3 1g 2O 2P 2Q
+2Q 2Q 2R 2S 1m 1e 3 1f 2J 2K 2L 2L 2L 2M 2N 1l 1d 3 1e 2E
+2F 2G 2G 2G 2H 2I 1k 1c 3 1d 29 2A 2B 2B 2B 2C 2D 1j 1b 3
+1c 24 25 26 26 26 27 28 1c 1k 1z 20 21 21 21 22 23 1a 3 1b
+1i e u 2 t f 2 g 2 h 3 i 3 j 3 j k 3 l 3 m 3 n 3 o 3 p 3 q
+3 r 3 s 3 s 2i 3o 2 3n 2j 3 2j 2k 3 2l 3 2m 3 2n 3 2o 3 2p
+3 2q 3 2r 3 2s 3 2t 3 2u 3 2v 3 2w 3 2x 3 2y 3 2z 3 30 3 31
+3 32 3 33 3 34 3 35 3 36 3 37 3 38 3 39 3 3A 3 3B 3 3C 3 3D
+3 3E 3 3F 3 3G 3 3H 3 3I 3 3J 3 3K 3 3L 3 3M 3 3N 3 3O 3 3P
+3 3Q 3 3R 3 3S 3 3T 3 3U 3 3V 3 3W 3 3X 3 3Y 3 3Z 3 3a 3 3b
+3 3c 3 3d 3 3e 3 3f 3 3g 3 3h 3 3i 3 3j 3 3k 3 3l 3 3m 3 3m
+3p 47 2 46 3q 2 3r 2 3s 3 3t 3 3t 3u 2 3v 2 3w 3 3x 3 3y 3
+3z 3 40 3 41 3 42 3 43 3 44 3 45 3 45 48 4N 2 4M 49 2 4A 2
+4B 3 4C 3 4D 3 4D 4E 2 4F 2 4G 2 4H 3 4I 2 4J 2 4K 2 4L 2 4L
+4O 4d 2 4c 4P 2 4Q 2 4R 3 4S 2 4T 2 4U 3 4U 4V 2 4W 2 4X 3
+4Y 2 4Z 2 4a 3 4b 3 4b 4y 4z 50 50 50 51 52 4o 2 4p 2 4q 2
+4q 4r 2 4s 2 4t 3 4u 2 4v 2 4w 3 4x 2 4x 4e 4n 2 4m 4f 3 4f
+4g 2 4h 2 4i 3 4j 2 4k 3 4l 3 4l 2 2d v 1Z 2 1Y w 2 x 2 y 3
+z 3 10 3 10 11 3 12 3 13 3 14 3 15 3 16 3 17 3 18 3 19 3 1A
+3 1B 3 1C 3 1D 3 1E 3 1F 3 1G 3 1H 3 1I 3 1J 3 1K 3 1L 3 1M
+3 1N 3 1O 3 1P 3 1Q 3 1R 3 1S 3 1T 3 1U 3 1V 3 1W 3 1X 3 1X
+2i v v v v v v v v
+   \end{Verbatim}
+\end{frame}
+\begin{frame}[fragile]{After 231バイト}
+   \begin{verbatim}
+012333435363738393a3b3c3d3e3f3g3h3i3j3k3l
+3m3n3o3p3q3r3s3Φ3u3v3w3x3y3z323IK2Jzr+,0-
+.W3X2XO3P3Q3R3S3T3U3V3W'(0)*VN3O#$0%&UM3N
+YZ0!"TL3MAE2DB2C2yz/=2<:2;2zs[^2]z\34_^`Σ
+2~B{2|2}2}ΥΨ2Χt2:Τ2Bέή0ίΰ{tΩά
+2ΫzΪ2t2+FH2GBb>@2?:4[FFF
+   \end{verbatim}
+
+   (途中に空白文字があるように見られるのはフォントと \LaTeX の設定の都合)
 \end{frame}
 
 \begin{frame}[fragile]{空白文字をなくす}
-
    \begin{description}
-      \item[効果] 中規模以上のプログラムではソースコードを2/3 程度に減らせる。
-      \item[実装の手間] 中
-      \item[技巧性] 中
+      \item[効果] 中規模以上のプログラムではソースコードを2/3 程度に減らせる
+      \item[実装の手間] 普通
       \item[適用可能性] いつでも
    \end{description}
 
    Transceternal の単一トークンは 1文字 もしくは (スペース区切りの) 文字列 である
 
-   この 1文字 には印字可能文字であればマルチバイト文字も含まれる。同一個数のトークンでも、ABC と表現するのと あ と表現するのでは
-   全てのトークンを1文字で表記するとスペース区切りが不要になるので、ソースコードの空白が全て削除できる
+   スペース区切りだとトークン文字数以外に空白も必要でバイト数がかさむ
 
-   先の例では3バイト文字であるひらがなを用いたが、実際にはロシア文字などの 2バイト文字を使うとよい
+   Transceternalではトークンの名前それ自体ではなく、トークン (つまり接点) 同士の関係にしか意味をもっていない
+
+   そこで、全てのトークンを1文字で表記するとスペース区切りが不要で、ソースコードの空白が縮むと考えられる
+
+   トークンの文字列としては印字可能マルチバイト文字も利用可能なので
+   ロシア文字などの 2バイト文字を使うと表記できる
+
+\end{frame}
+\begin{frame}[fragile]{空白文字をなくす}
+   具体的には、なるべく多くの1バイト文字 (アルファベットと記号と数字全て) を使いつつ、使い切った後に2バイト文字を使うとよい
+
+   Python で2バイト文字列を列挙するには (トークン数に応じ境界は調整すること):
 
    \begin{verbatim}
     # Cyriic, Arabic
-    "".join([chr(x) for x in range(0x3a3, 0x052f)]) + "".join([chr(x) for x in range(0x61e, 0x70d)])
+    "".join([chr(x) for x in range(0x3a3, 0x052f)]) + \
+        "".join([chr(x) for x in range(0x61e, 0x70d)])
     \end{verbatim}
 
-    Python ならこのように2バイト文字列を列挙できる (トークン数に応じ境界は調整すること)
+    とできる
+\end{frame}
+
+\begin{frame}{容量削減の方針}
+   空白文字をなくした後、ソースコードのバイト数は 
+   \[
+      \text{ノード数} \times \text{そのノードのバイト数} \times 2
+   \]
+   で決まる。
+
+   ソースコードを小さくするには、ノード数を減らすこと、各ノードのバイト数を減らすことが基本的な方針
+
+   アルゴリズムの改良もソースコードを小さくするには有用だが、ここでは取り上げず、Transceternal 固有の事項に絞り説明する
+
+   中規模以上のプログラムでは、おおよそ絶対アドレスの値を指定するための接点がボトルネックになる。指定用接点を減らすことが中心となる
 \end{frame}
 
 \begin{frame}{絶対アドレス指定用接点の共有}
    \begin{description}
       \item[効果] 高い。半減も可能？
-      \item[実装の手間] 特殊な場合のみ実装するなら低、一般の場合は中から高
-      \item[技巧性] 中
-      \item[適用可能性] deserialize される接点が存在するならいつでも
-   \end{description}
-\end{frame}
-\subsection{0ビットにする}
-\begin{frame}
-   \begin{description}
-      \item[効果] 数bitから沢山まで、可能性はもろもろ
-      \item[実装の手間] 高
-      \item[技巧性] 高
+      \item[実装の手間] 特殊な場合の実装は簡単、一般の場合は手間？
       \item[適用可能性] いつでも
    \end{description}
+
+   各コマンドでは左辺右辺として、deserialize したときにグラフ上の絶対アドレスを表す値を指定する。
+
+   指定するときのアドレスを表す値を、途中まで共有するようにすればノード数が削減できる
+
+   例: 10000, 010000 この2つのアドレスを表す値は、素直に表現すれば $5 + 6 = 11$ バイト必要だが、010000 を 1のところで 10000 に繋げば $5 + (6-5) = 6$ バイトで済む。
+
+\end{frame}
+
+\begin{frame}{絶対アドレス指定用接点の共有}
+   これは多数の似たような接点があるほど効果が大きいが、一方アドレスが前方一致している場合は共有できないことに注意。
+
+   例: 1000, 1001 この2つのアドレスを表す値は、最後の部分が異なる値をもっているので、共有できず $4 + 4 = 8$ バイト必要。
+
+   生成器で共有機構を完全に実装しようとするときは:
+   \begin{enumerate}
+      \item アドレスの逆順の suffix で二分木を構成し、二分木に対応する接点の位置を記録する。
+      \item アドレスを表す値を構築するときには、二分木を確認し二分木に後方部分文字列が一致すれば一致した二分木上の接点から 1...1 を構築する。構築後二分木に追記する
+   \end{enumerate}
+
+   部分的な場合 ( 1...1 という形のアドレスのみ、など) はより簡単で、1 が続くような値を生成するときに、生成した値とその個数を覚えておいて、その途中をトラバースするか最後に繋げればよい
+\end{frame}
+
+\begin{frame}{絶対アドレス指定用接点の共有: 図解}
+   \quad
+\end{frame}
+\begin{frame}{絶対アドレス指定用接点の共有: 図解}
+   \quad
+\end{frame}
+
+\begin{frame}{接点のトークン割り付けの再検討}
+   \begin{description}
+      \item[効果] 数バイト以上？ソースコード中のループ要素が多いほど有効
+      \item[実装の手間] 手動でできる規模なら簡単、大規模では煩雑
+      \item[適用可能性] 中規模以上のプログラムならいつでも
+   \end{description}
+
+   ロシア文字などの 2バイト文字を用いてソースコードを小さくすることについて述べた。
+
+   しかし、各トークンごとの出現回数はそのノード「へ」繋がる接点の個数で決まり、出現回数はまちまちである。
+
+   トークンとして1バイト文字列を多用するほうがソースコードが小さくなることと合わせると、
+   頻繁に出現するノードに1バイト文字を割当てると、2バイト文字を割当てるより小さくなる。
+
+   ex: ああi は iiあ とすると7バイトから5バイトになる\footnote{この場合1バイト文字が余っているので、iic と全て1バイトトークンにすると3バイトになる}
+\end{frame}
+
+\begin{frame}{接点のトークン割り付けの再検討}
+
+   実際には絶対アドレス指定用接点という大抵1枝のみ接続する接点が大多数を占めているので、2回以上出現するトークンは可能な限り1バイト文字であるべき
+
+   生成器で自動的に行うなら、仮の状態で構築したTransceternal ソースコードに対して、出現頻度の高い順番に並べ、1バイト文字列, ..., 2バイト文字列 と順番に割り付けていく
+
+   あるいは、手動なら uniq -c などで使用頻度を調べ、使用頻度の高い多バイト文字ものと低い1バイト文字とを交換すればよい
+\end{frame}
+
+\begin{frame}{変数配置の再検討}
+   \begin{description}
+      \item[効果] 中程度から高
+      \item[実装の手間] 煩雑
+      \item[適用可能性] 変数、あるいは変数アクセスアドレスが多彩な場合
+   \end{description}
+
+   変数配置計画を再検討する
+
+   アクセスアドレスが多彩な場合に
+
+   正しく動作しないときのデバッグや、多数の変数が絡みあうときの処理が手間なので実装は煩雑になる
+\end{frame}
+
+\begin{frame}
+   \begin{description}{絶対アドレスの再検討}
+      \item[効果] 数bitから沢山まで、可能性はもろもろ
+      \item[実装の手間] 簡単なものから面倒なものまで
+      \item[適用可能性] いつでも
+   \end{description}
+   先のものとも関係するが
+
+   たとえば、11111...10 と 11.....1 のかたちがあるときに、何とか前者を後者に帰着できないかと考える。うまくいかない場合がほとんど
+
+   1....1 の連続のうち、最長のものの使用頻度が低い場合は処理を分割できないか考える
+   とくに set を string の移動として処理している場合 ( 1 に 111....1 を代入している場合) はそのまま分割できる
+
+   あるいは、別のリンクから見んいいけないか検討する
+   似たようなアドレスに複数箇所からアクセスできる場合、たとえば入力の一部が変数に代入されている場合、変数が代入時から変更されていないと仮定できる場合は 1...1
+
+   あるいは、もし対象プログラムが入力をほとんど使わず変数への絶対アドレスを表す値を使っているのなら 1...1 をなるべく使わないような方針も必要かもしれない
+
+\end{frame}
+
+\begin{frame}{状態の一部共有}
+   \begin{description}
+      \item[効果] 数バイト?
+      \item[実装の手間] 見つけられれば簡単
+      \item[適用可能性] 引数が2つとも一致している場合のみ。似たような処理が多い場合は可能性アリ
+   \end{description}
+
+   たとえば set を2つに分割した場合、引数が2つとも一致できるかもしれない。
+   そのときは if node の以下の2接点を共通化することで4バイト削減できる
 \end{frame}
 
 \begin{frame}{B1, admin, root 接点を他の接点と共有}
    \begin{description}
       \item[効果] 数バイト？
       \item[実装の手間] 高
-      \item[技巧性] 高
-      \item[適用可能性] 小規模プログラムのみ。B1 と比べadmin は難しい
+      \item[適用可能性] 変数が多くない小規模プログラムのみ。B1 と比べadmin は難しい
    \end{description}
+   これは技巧的なので注意
+
+   変数のkkkB1 自体を
 \end{frame}
 
-\section{その他の要検討事項}
-\begin{frame}
+\begin{frame}[fragile]{補足}
+   何となく知っておくとソースコードの短縮に役立つかもしれない\footnote{無駄な知識かもしれない} 直感
+   \begin{itemize}
+      \item Transceternal では 1 と 0 が非対称。B0以外とB0 だと、B0 以外のほうが得やすい\footnote{01 以下のコマンド用ノードなど、アドレス指定と本来無関係のノードをアドレス指定用に転用jすることを試みると、1 の連続ばかりが得られる。B0/B1 の子を変数用に使っていると 0 が続くほうがいいのに難しい。}
+      \item デバッグ用にジェネレータの変更は小さくやっていくことが基本、一度に複数の変更をしない
+   \end{itemize}
 
+   コマンドごとのノード数消費量のイメージ。アドレス指定用接点が大多数になる
+   \begin{itemize}
+      \item root, admin, B0, B1 で4接点
+      \item set は3接点/コマンド
+      \item allocate, if は4接点/コマンド
+      \item アドレス指定用接点は 2接点/0 or 1
+   \end{itemize}
 \end{frame}
 
-\section{没となったアイデア}
 \begin{frame}
    以下では没となったアイデアを取り上げる。
-   場合によっては利用できるかもしれない？
+   場合によっては利用できるかもしれないが、過度な期待は禁物
 \end{frame}
 
 \begin{frame}{動的命令生成}
+   今回は命令は全て静的に生成していたが、起動後に動的に生成できないか？
+
    問題点: allocate 命令をつかうために 4接点必要なこと、ソースコードが読みにくくなること
 
-   allocate おコストが高いので利用可能な場面に思い至らない状況
+   allocate のコストが高く、今のところ利用可能な場面に思い至らない
 \end{frame}
 
 \begin{frame}{ブックマーク (仮)}
    deserialize 対象について、接点が 1 と判定される基準は 0-pointer が B0 でないこと。
    B1 でなくてもよい。
 
-   "B0 以外" の接点を今までは B1 などと定めていたが、そこに情報を埋め込みたい
+   ``B0 以外'' の接点を今までは B1 などと定めていたが、そこに情報を埋め込みたい
 
-   有益な接点にアクセスするための絶対アドレスがdeserialize 対象の絶対アドレス + 最初の1 までのアドレス数 + 0 で表現できる。深い階層にある変数を簡潔に表せることが期待できる
+   有益な接点にアクセスするための絶対アドレスがdeserialize 対象の絶対アドレス + 最初の1 までのアドレス数 + 0 で表現できる。
+
+   すると、深い階層にある変数を簡潔に表せることが期待できる
 \end{frame}
 
 \begin{frame}{ブックマーク (仮)}
@@ -154,10 +306,14 @@ catacat
 
    その接点を新しく作らずに既存接点 (root) にすることで if に必要な接点が1つ省略できるのは紹介した通りだが、そこに情報を埋め込みたい
 
-   プログラム中実行中に if 対象の接点は絶対アドレス  `0100` のたった4バイトでアクセスできる。
-   深い階層にある変数をif 中の左辺や右辺に使うとき、その変数の接点へのポインタを `0100` に置いておくと 必要な絶対アドレスの abstruct 表現が削減できる。
+   プログラム中実行中に if 対象の接点は絶対アドレス  ``0100'' を表す値のたった8バイトでアクセスできる。
+   深い階層にある変数をif 中の左辺や右辺に使うとき、その変数の接点へのポインタを ``0100'' に置いておくと 必要な絶対アドレスの abstruct 表現が削減できる。
 
    今回は変数の個数が少なく、全ての変数を B0, B1 直下に配置したので、ブックマークせずとも元々の位置で既に4バイト以下でアクセスできた。この方針では有益にならなかった。
+\end{frame}
+
+\begin{frame}{ブックマーク(仮): 図解}
+   \quad
 \end{frame}
 
 \end{document}
