@@ -31,6 +31,12 @@ $ cat output.txt
 aba
 ```
 
+## リンク
+
+* [公式サイト](https://esolangs.org/wiki/Transceternal)
+* [筆者によるコードゴルフ解説スライド](https://github.com/hiromi-mi/transceternal-ja/blob/gh-pages/slide/transceternal_codegolf_technique.pdf)
+* [コードゴルフ用ソースコード](https://github.com/hiromi-mi/transceternal-ja/tree/gh-pages/golflog)
+
 ## ライセンス
 [CC0](https://creativecommons.org/share-your-work/public-domain/cc0/)
 
